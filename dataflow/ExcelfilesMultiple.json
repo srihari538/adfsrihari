@@ -1,0 +1,64 @@
+{
+	"name": "ExcelfilesMultiple",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Multifileswithsinglesheet",
+						"type": "DatasetReference"
+					},
+					"name": "Singleexcelfile"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Excel_loadtable",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          eid as string,",
+				"          ename as string,",
+				"          location as string,",
+				"          deptid as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     rowUrlColumn: 'Filename',",
+				"     wildcardPaths:['*.xlsx']) ~> Singleexcelfile",
+				"Singleexcelfile sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          id as integer,",
+				"          empname as string,",
+				"          location as string,",
+				"          deptid as integer,",
+				"          filenames as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          id = eid,",
+				"          empname = ename,",
+				"          location,",
+				"          deptid,",
+				"          filenames = Filename",
+				"     )) ~> sink1"
+			]
+		}
+	}
+}

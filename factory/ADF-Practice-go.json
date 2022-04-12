@@ -1,0 +1,9 @@
+{
+	"name": "ADF-Practice-go",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "3a924b12-35fb-457d-b96f-53825ca8a3a2",
+		"tenantId": "44c371cd-c50d-4ebe-9bbe-24f3728c3d80"
+	}
+}

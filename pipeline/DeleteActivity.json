@@ -1,0 +1,45 @@
+{
+	"name": "DeleteActivity",
+	"properties": {
+		"activities": [
+			{
+				"name": "Delete Folder from Blob",
+				"type": "Delete",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "DeleteFolder",
+						"type": "DatasetReference"
+					},
+					"logStorageSettings": {
+						"linkedServiceName": {
+							"referenceName": "Dep_linkedservice",
+							"type": "LinkedServiceReference"
+						},
+						"path": "output"
+					},
+					"enableLogging": true,
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					}
+				}
+			}
+		],
+		"folder": {
+			"name": "Basic/Basic_flow"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-04-11T06:37:39Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

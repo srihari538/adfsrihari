@@ -1,0 +1,39 @@
+{
+	"name": "empcsvload",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "SceneriosDatasets"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "empname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "location",
+				"type": "nvarchar"
+			},
+			{
+				"name": "deptid",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "csvfilesload"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

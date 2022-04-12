@@ -1,0 +1,27 @@
+{
+	"name": "csvfolder",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Dep_linkedservice",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "SceneriosDatasets"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "*.csv",
+				"container": "csvfolder"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

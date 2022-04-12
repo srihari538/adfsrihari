@@ -1,0 +1,94 @@
+{
+	"name": "ConditionSplit",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "empCSV",
+						"type": "DatasetReference"
+					},
+					"name": "emp"
+				},
+				{
+					"dataset": {
+						"referenceName": "DepCSV",
+						"type": "DatasetReference"
+					},
+					"name": "Dep"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "CSplitIT",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				},
+				{
+					"dataset": {
+						"referenceName": "CSplitIT",
+						"type": "DatasetReference"
+					},
+					"name": "sink2"
+				}
+			],
+			"transformations": [
+				{
+					"name": "join1"
+				},
+				{
+					"name": "split1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          eid as string,",
+				"          ename as string,",
+				"          dept as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> emp",
+				"source(output(",
+				"          did as string,",
+				"          dname as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> Dep",
+				"emp, Dep join(dept == did,",
+				"     joinType:'inner',",
+				"     partitionBy('hash', 1),",
+				"     broadcast: 'auto')~> join1",
+				"join1 split(dname==\"IT\",",
+				"     disjoint: false,",
+				"     partitionBy('hash', 1)) ~> split1@(IT, Other)",
+				"split1@IT sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['IT'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          eid,",
+				"          ename,",
+				"          dname",
+				"     ),",
+				"     partitionBy('hash', 1)) ~> sink1",
+				"split1@Other sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['HR'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          eid,",
+				"          ename,",
+				"          dname",
+				"     ),",
+				"     partitionBy('hash', 1)) ~> sink2"
+			]
+		}
+	}
+}

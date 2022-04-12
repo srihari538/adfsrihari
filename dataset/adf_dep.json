@@ -1,0 +1,29 @@
+{
+	"name": "adf_dep",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Adf_dep",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Basicdatasets"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "varchar"
+			},
+			{
+				"name": "names",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "adf_dept"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,42 @@
+{
+	"name": "empexcel",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Dep_linkedservice",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Exceldatasets"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "Hyd",
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "empexcel.xlsx",
+				"container": "excel"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": [
+			{
+				"name": "eid",
+				"type": "String"
+			},
+			{
+				"name": "ename",
+				"type": "String"
+			},
+			{
+				"name": "location",
+				"type": "String"
+			},
+			{
+				"name": "deptid",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

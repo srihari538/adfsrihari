@@ -1,0 +1,43 @@
+{
+	"name": "Excel_loadtable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "ExcelSpreadsheetpipeline_Ds"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "empname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "location",
+				"type": "nvarchar"
+			},
+			{
+				"name": "deptid",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "filenames",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "exceload"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

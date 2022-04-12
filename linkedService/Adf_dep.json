@@ -1,0 +1,12 @@
+{
+	"name": "Adf_dep",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=76.database.windows.net;initial catalog=retail;user id=myadmin",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDUzRjQ5RDA1LUQ3QjQtNDc0Ri04MEM2LThERUU1RUI4RjM5QV80M2Y0NTY3Yy0zMTRhLTQwODktODY2Yi1hNzIzOTZiYzE0NDciDQp9"
+		}
+	}
+}

@@ -1,0 +1,21 @@
+{
+	"name": "Binary1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Dep_linkedservice",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Basicdatasets"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "containerstorage"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
